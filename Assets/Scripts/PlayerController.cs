@@ -12,11 +12,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rotateFireInput = 0;
     [SerializeField] private bool stopedRotation = false;
     [SerializeField] private bool fired = false;
+    [SerializeField] private float power;
 
     // Start is called before the first frame update
     void Start()
     {
         playerSpeed = 10f;
+        power = 10f;
 
     }
     public void OnMove(InputAction.CallbackContext context)
@@ -27,7 +29,6 @@ public class PlayerController : MonoBehaviour
     {
         rotateFireInput = context.ReadValue<float>();
         Debug.Log("aaa");
-        fireBallOrbitPlayer.GetComponent<FireballOrbitPlayerController>().AxerlerBoule(rotateFireInput*100);
     }
     public void OnStopedRotation(InputAction.CallbackContext context)
     {
@@ -36,13 +37,14 @@ public class PlayerController : MonoBehaviour
     public void Onfire(InputAction.CallbackContext context)
     {
         fired = context.action.triggered;
+        fireBallOrbitPlayer.GetComponent<FireballOrbitPlayerController>().Feuer(mouvementInput*power) ;
     }
     // Update is called once per frame
     void Update()
     {
         Vector3 move = new Vector3(mouvementInput.x, 0, mouvementInput.y);
         transform.position+=move * Time.deltaTime * playerSpeed;
-
+        fireBallOrbitPlayer.GetComponent<FireballOrbitPlayerController>().AxerlerBoule(rotateFireInput);
         if (move != Vector3.zero)
         {
             playerBody.transform.forward = move;

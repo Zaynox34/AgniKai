@@ -12,6 +12,7 @@ public class FireballOrbitPlayerController : MonoBehaviour
     [SerializeField] private float spawnCounter;
     [SerializeField] private int maxNbFireball;
     [SerializeField] private int maxSpeed;
+    [SerializeField] private float realSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -28,18 +29,20 @@ public class FireballOrbitPlayerController : MonoBehaviour
     void Update()
     {
         BougetesBoule();
-        if (spawnCounter>=spawnRythm && nbFireball<maxNbFireball)
+        NaturalSpawn();
+        spawnCounter += Time.deltaTime;
+    }
+    public void NaturalSpawn()
+    {
+        if (spawnCounter >= spawnRythm && nbFireball < maxNbFireball)
         {
             nbFireball++;
-            GameObject fireBall =Instantiate(prefabFireBall);
+            GameObject fireBall = Instantiate(prefabFireBall);
             fireBall.transform.parent = transform;
             ArangeBall();
             spawnCounter = 0;
+            realSpeed = speedOrbit * Mathf.Deg2Rad * sizeOrbit;
         }
-        
-        
-        
-        spawnCounter += Time.deltaTime;
     }
     public void ArangeBall()
     {
@@ -59,4 +62,13 @@ public class FireballOrbitPlayerController : MonoBehaviour
     {
         speedOrbit+=ax;
     }
+    public void Feuer(Vector3 power)
+    {
+        if (nbFireball > 0)
+        {
+            transform.GetChild(nbFireball - 1).GetComponent<FireBallManager>().velocity=power*realSpeed;
+            transform.GetChild(nbFireball - 1).parent=null;
+        }
+    }
+
 }
