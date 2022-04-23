@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     public void OnRotateFire(InputAction.CallbackContext context)
     {
         rotateFireInput = context.ReadValue<float>();
+        Debug.Log("aaa");
+        fireBallOrbitPlayer.GetComponent<FireballOrbitPlayerController>().AxerlerBoule(rotateFireInput*100);
     }
     public void OnStopedRotation(InputAction.CallbackContext context)
     {
