@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float playerSpeed;
+    public float playerSpeed;
     [SerializeField] private GameObject fireBallOrbitPlayer;
     [SerializeField] private GameObject playerBody;
     [SerializeField] private Vector2 mouvementInput = Vector2.zero;
@@ -16,9 +16,9 @@ public class PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        playerSpeed = 10f;
-        power = 10f;
+    {      
+        playerSpeed = 8f;
+        power = 2f;
 
     }
     public void OnMove(InputAction.CallbackContext context)
@@ -28,20 +28,29 @@ public class PlayerController : MonoBehaviour
     public void OnRotateFire(InputAction.CallbackContext context)
     {
         rotateFireInput = context.ReadValue<float>();
-        Debug.Log("aaa");
+        
     }
     public void OnStopedRotation(InputAction.CallbackContext context)
     {
         stopedRotation = context.action.triggered;
+        if (context.started == true)
+        {
+            fireBallOrbitPlayer.GetComponent<FireballOrbitPlayerController>().StopRotation();
+        }
     }
     public void Onfire(InputAction.CallbackContext context)
     {
-        fired = context.action.triggered;
-        fireBallOrbitPlayer.GetComponent<FireballOrbitPlayerController>().Feuer(mouvementInput*power) ;
+        fired = context.started;
+        if (context.started==true)
+        {
+            Debug.Log("ZZZ");
+            fireBallOrbitPlayer.GetComponent<FireballOrbitPlayerController>().canFire = true;
+            fireBallOrbitPlayer.GetComponent<FireballOrbitPlayerController>().directionFire = playerBody.transform.forward * power;
+        }
     }
     // Update is called once per frame
     void Update()
-    {
+    { 
         Vector3 move = new Vector3(mouvementInput.x, 0, mouvementInput.y);
         transform.position+=move * Time.deltaTime * playerSpeed;
         fireBallOrbitPlayer.GetComponent<FireballOrbitPlayerController>().AxerlerBoule(rotateFireInput);

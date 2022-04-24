@@ -13,6 +13,8 @@ public class FireballOrbitPlayerController : MonoBehaviour
     [SerializeField] private int maxNbFireball;
     [SerializeField] private int maxSpeed;
     [SerializeField] private float realSpeed;
+    public Vector3 directionFire;
+    public bool canFire;
 
     // Start is called before the first frame update
     void Start()
@@ -22,14 +24,17 @@ public class FireballOrbitPlayerController : MonoBehaviour
         speedOrbit=0;
         spawnCounter = 0;
         spawnRythm =2;
+        maxSpeed = 80;
         maxNbFireball=10;
-    }
+        canFire=false;
+}
 
     // Update is called once per frame
     void Update()
     {
         BougetesBoule();
         NaturalSpawn();
+        Feuer();
         spawnCounter += Time.deltaTime;
     }
     public void NaturalSpawn()
@@ -41,7 +46,6 @@ public class FireballOrbitPlayerController : MonoBehaviour
             fireBall.transform.parent = transform;
             ArangeBall();
             spawnCounter = 0;
-            realSpeed = speedOrbit * Mathf.Deg2Rad * sizeOrbit;
         }
     }
     public void ArangeBall()
@@ -50,7 +54,8 @@ public class FireballOrbitPlayerController : MonoBehaviour
         {
             for (int i = 0; i < nbFireball; i++)
             {
-                transform.GetChild(i).position = transform.position + sizeOrbit * new Vector3(Mathf.Cos(360 / nbFireball * i*Mathf.Deg2Rad), 0, Mathf.Sin(360 / nbFireball * i * Mathf.Deg2Rad));
+                transform.GetChild(i).position = transform.position + sizeOrbit * new Vector3(Mathf.Cos(360 / nbFireball * i*Mathf.Deg2Rad),0, Mathf.Sin(360 / nbFireball * i * Mathf.Deg2Rad));
+                transform.GetChild(i).position += new Vector3(0, 1,0);
             }
         }
     }
@@ -60,15 +65,34 @@ public class FireballOrbitPlayerController : MonoBehaviour
     }
     public void AxerlerBoule(float ax)
     {
-        speedOrbit+=ax;
-    }
-    public void Feuer(Vector3 power)
-    {
-        if (nbFireball > 0)
+
+        if (Mathf.Abs((speedOrbit+ax) * Mathf.Deg2Rad * sizeOrbit) > maxSpeed)
         {
-            transform.GetChild(nbFireball - 1).GetComponent<FireBallManager>().velocity=power*realSpeed;
-            transform.GetChild(nbFireball - 1).parent=null;
+            realSpeed = 80;
         }
+        else
+        {
+            speedOrbit += ax;
+        }
+        realSpeed = Mathf.Abs(speedOrbit * Mathf.Deg2Rad * sizeOrbit);
+        transform.parent.GetComponent<PlayerController>().playerSpeed=(maxSpeed-realSpeed)/5+8;
+
+    }
+    public void Feuer()
+    {
+        if (canFire && nbFireball > 0)
+        {
+            Debug.Log("aaa");
+            transform.GetChild(nbFireball - 1).GetComponent<FireBallManager>().velocity=directionFire*realSpeed;
+            transform.GetChild(nbFireball - 1).parent=null;
+            canFire=false;
+            nbFireball--;
+            ArangeBall();
+        }
+    }
+    public void StopRotation()
+    {
+        speedOrbit = 0;
     }
 
 }
