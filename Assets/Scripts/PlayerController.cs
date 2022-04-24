@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {      
-        playerSpeed = 8f;
+        playerSpeed = 10f;
         power = 2f;
 
     }
@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour
         fired = context.started;
         if (context.started==true)
         {
-            
             fireBallOrbitPlayer.GetComponent<FireballOrbitPlayerController>().canFire = true;
             fireBallOrbitPlayer.GetComponent<FireballOrbitPlayerController>().directionFire = playerBody.transform.forward * power;
         }

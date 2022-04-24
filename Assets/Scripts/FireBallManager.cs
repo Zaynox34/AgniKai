@@ -27,7 +27,7 @@ public class FireBallManager : MonoBehaviour
     }
     public void LerpNow()
     {
-        if(counterLerp>=1)
+        if(originLerp==null||targetLerp==null||counterLerp>=1)
         {
             canLerp = false;
             counterLerp = 0;

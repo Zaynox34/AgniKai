@@ -79,7 +79,7 @@ public class FireballOrbitPlayerController : MonoBehaviour
     
     public void ArangeBall()
     {
-        if (nbFireball > 0 && nbFireball <=10)
+        if (nbFireball > 0 && nbFireball <=maxNbFireball)
         {
             for (int i = 0; i < nbFireball; i++)
             {
@@ -114,10 +114,17 @@ public class FireballOrbitPlayerController : MonoBehaviour
     {
         if (canFire && nbFireball > 0)
         {
-            fireBallGroup.transform.GetChild(nbFireball - 1).GetComponent<FireBallManager>().canLerp=false;
             Destroy(fireBallGroup.transform.GetChild(nbFireball - 1).GetComponent<FireBallManager>().originLerp);
             Destroy(fireBallGroup.transform.GetChild(nbFireball - 1).GetComponent<FireBallManager>().targetLerp);
-            fireBallGroup.transform.GetChild(nbFireball - 1).GetComponent<FireBallManager>().velocity=directionFire*realSpeed;
+            if(realSpeed==0)
+            {
+                fireBallGroup.transform.GetChild(nbFireball - 1).GetComponent<FireBallManager>().velocity = directionFire*20;
+            }
+            else
+            {
+                fireBallGroup.transform.GetChild(nbFireball - 1).GetComponent<FireBallManager>().velocity = directionFire * realSpeed;
+            }
+            
             fireBallGroup.transform.GetChild(nbFireball - 1).parent=null;
             canFire =false;
             nbFireball--;
