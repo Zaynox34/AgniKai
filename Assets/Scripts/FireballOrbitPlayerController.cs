@@ -5,6 +5,11 @@ using UnityEngine;
 public class FireballOrbitPlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject prefabFireBall;
+    [SerializeField] private GameObject prefabTargetBall;
+    [SerializeField] private GameObject prefabOriginBall;
+    [SerializeField] private GameObject fireBallGroup;
+    [SerializeField] private GameObject targetBallGroup;
+    [SerializeField] private GameObject originBallGroup;
     [SerializeField] private int nbFireball;
     [SerializeField] private float sizeOrbit;
     [SerializeField] private float speedOrbit;
@@ -37,28 +42,55 @@ public class FireballOrbitPlayerController : MonoBehaviour
         Feuer();
         spawnCounter += Time.deltaTime;
     }
+    public void MeroriseOriginBall()
+    {
+        for (int i = 0; i < nbFireball; i++)
+        {
+            originBallGroup.transform.GetChild(i).position = targetBallGroup.transform.GetChild(i).position;
+        }
+    }
     public void NaturalSpawn()
     {
+
         if (spawnCounter >= spawnRythm && nbFireball < maxNbFireball)
         {
-            nbFireball++;
+            MeroriseOriginBall();
             GameObject fireBall = Instantiate(prefabFireBall);
-            fireBall.transform.parent = transform;
+            fireBall.transform.parent = fireBallGroup.transform;
+            fireBall.transform.position = fireBallGroup.transform.position;
+
+            GameObject originBall = Instantiate(prefabOriginBall);
+            originBall.transform.parent = originBallGroup.transform;
+            originBall.transform.position = originBallGroup.transform.position;
+
+            GameObject targetBall = Instantiate(prefabTargetBall);
+            targetBall.transform.parent = targetBallGroup.transform ;
+            targetBall.transform.position = targetBallGroup.transform.position;
+
+            fireBall.GetComponent<FireBallManager>().originLerp = originBall;
+            fireBall.GetComponent<FireBallManager>().targetLerp = targetBall;
+
+            nbFireball++;
             ArangeBall();
+
             spawnCounter = 0;
         }
     }
+    
     public void ArangeBall()
     {
         if (nbFireball > 0 && nbFireball <=10)
         {
             for (int i = 0; i < nbFireball; i++)
             {
-                transform.GetChild(i).position = transform.position + sizeOrbit * new Vector3(Mathf.Cos(360 / nbFireball * i*Mathf.Deg2Rad),0, Mathf.Sin(360 / nbFireball * i * Mathf.Deg2Rad));
-                transform.GetChild(i).position += new Vector3(0, 1,0);
+                targetBallGroup.transform.GetChild(i).position = transform.position + sizeOrbit * new Vector3(Mathf.Cos(360 / nbFireball * i*Mathf.Deg2Rad),0, Mathf.Sin(360 / nbFireball * i * Mathf.Deg2Rad));
+                targetBallGroup.transform.GetChild(i).position += new Vector3(0, 1, 0);
+                
+                fireBallGroup.transform.GetChild(i).GetComponent<FireBallManager>().canLerp = true;
             }
         }
     }
+
     public void BougetesBoule()
     {
        transform.Rotate(new Vector3(0,speedOrbit,0)*Time.deltaTime);
@@ -82,10 +114,12 @@ public class FireballOrbitPlayerController : MonoBehaviour
     {
         if (canFire && nbFireball > 0)
         {
-            Debug.Log("aaa");
-            transform.GetChild(nbFireball - 1).GetComponent<FireBallManager>().velocity=directionFire*realSpeed;
-            transform.GetChild(nbFireball - 1).parent=null;
-            canFire=false;
+            fireBallGroup.transform.GetChild(nbFireball - 1).GetComponent<FireBallManager>().canLerp=false;
+            Destroy(fireBallGroup.transform.GetChild(nbFireball - 1).GetComponent<FireBallManager>().originLerp);
+            Destroy(fireBallGroup.transform.GetChild(nbFireball - 1).GetComponent<FireBallManager>().targetLerp);
+            fireBallGroup.transform.GetChild(nbFireball - 1).GetComponent<FireBallManager>().velocity=directionFire*realSpeed;
+            fireBallGroup.transform.GetChild(nbFireball - 1).parent=null;
+            canFire =false;
             nbFireball--;
             ArangeBall();
         }

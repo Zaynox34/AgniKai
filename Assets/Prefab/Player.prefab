@@ -1,5 +1,95 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &299367425385938813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7442172363701298889}
+  m_Layer: 0
+  m_Name: FireBallGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7442172363701298889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299367425385938813}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5248861950512127131}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1106908573700300935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7085604051937019905}
+  m_Layer: 0
+  m_Name: OriginBallGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7085604051937019905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106908573700300935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5248861950512127131}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1702814688295822579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7453456590102475328}
+  m_Layer: 0
+  m_Name: TagetBallGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7453456590102475328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702814688295822579}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5248861950512127131}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2661787333900419659
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,7 +212,10 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7442172363701298889}
+  - {fileID: 7453456590102475328}
+  - {fileID: 7085604051937019905}
   m_Father: {fileID: 5248861950875449410}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -139,6 +232,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabFireBall: {fileID: 8827309911571924323, guid: 77186b1a923caad47a67cbf3f2d96124, type: 3}
+  prefabTargetBall: {fileID: 6041566781528845722, guid: 0f110ccd87d87b141975846ed382b3ec, type: 3}
+  prefabOriginBall: {fileID: 7738184706785574380, guid: 49f43285113e09a4790d10ba91cef5ff, type: 3}
+  fireBallGroup: {fileID: 299367425385938813}
+  targetBallGroup: {fileID: 1702814688295822579}
+  originBallGroup: {fileID: 1106908573700300935}
   nbFireball: 0
   sizeOrbit: 0
   speedOrbit: 0
@@ -146,6 +244,9 @@ MonoBehaviour:
   spawnCounter: 0
   maxNbFireball: 0
   maxSpeed: 0
+  realSpeed: 0
+  directionFire: {x: 0, y: 0, z: 0}
+  canFire: 0
 --- !u!1 &5248861950702721555
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,6 +397,7 @@ MonoBehaviour:
   rotateFireInput: 0
   stopedRotation: 0
   fired: 0
+  power: 0
 --- !u!114 &5248861950875449408
 MonoBehaviour:
   m_ObjectHideFlags: 0

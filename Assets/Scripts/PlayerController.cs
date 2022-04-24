@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         fired = context.started;
         if (context.started==true)
         {
-            Debug.Log("ZZZ");
+            
             fireBallOrbitPlayer.GetComponent<FireballOrbitPlayerController>().canFire = true;
             fireBallOrbitPlayer.GetComponent<FireballOrbitPlayerController>().directionFire = playerBody.transform.forward * power;
         }
