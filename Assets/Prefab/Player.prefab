@@ -488,7 +488,7 @@ MonoBehaviour:
     m_ActionId: 7a3cc5a0-2f33-48ea-a73f-19c6db209331
     m_ActionName: Player/Fire[/Keyboard/semicolon]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Keyboard
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
