@@ -62,6 +62,15 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Select"",
+                    ""type"": ""Button"",
+                    ""id"": ""82fa28c4-23c2-4e91-9b8a-edba43cdbc32"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -154,50 +163,6 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""42f92f89-18c3-4243-b937-ff4db41a329e"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboord2"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""8347abcb-b0c4-4e97-a85c-51e0e9ee2bbf"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboord2"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""e0df4226-ebe3-40c5-a941-73c9929e7508"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboord2"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""053b98d4-a604-4641-aeb2-1a7056aab5cd"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboord2"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""5080d80e-7096-458e-a0b9-d9aa5d56bf14"",
                     ""path"": ""<Keyboard>/l"",
@@ -221,17 +186,6 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""df1eb637-48a2-499f-b3de-00733b4b5117"",
-                    ""path"": ""<Keyboard>/numpad3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboord2"",
-                    ""action"": ""StopRotateFire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""b6ef73d9-5c29-40da-afbe-8310a3aff796"",
                     ""path"": ""<Keyboard>/semicolon"",
                     ""interactions"": """",
@@ -248,17 +202,6 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Fire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f6b0458f-cb6d-4e85-a1b5-fa9f02e43f7a"",
-                    ""path"": ""<Keyboard>/numpad0"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboord2"",
                     ""action"": ""Fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -341,26 +284,26 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""negative"",
-                    ""id"": ""f4642413-c3a8-448f-8c22-01cafc62b336"",
-                    ""path"": ""<Keyboard>/numpad1"",
-                    ""interactions"": """",
+                    ""name"": """",
+                    ""id"": ""6a8a275e-03c8-43a9-8a79-208c3a6ef59f"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
-                    ""groups"": ""Keyboord2"",
-                    ""action"": ""RotateFire"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Select"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""2d4160a1-511a-469d-bc04-1c40ba8292a8"",
-                    ""path"": ""<Keyboard>/numpad2"",
-                    ""interactions"": """",
+                    ""name"": """",
+                    ""id"": ""ff17b0a7-71a7-4b39-80ba-309b738a8601"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
-                    ""groups"": ""Keyboord2"",
-                    ""action"": ""RotateFire"",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Select"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -387,17 +330,6 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                     ""isOR"": false
                 }
             ]
-        },
-        {
-            ""name"": ""Keyboord2"",
-            ""bindingGroup"": ""Keyboord2"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<Keyboard>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                }
-            ]
         }
     ]
 }");
@@ -407,6 +339,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         m_Player_RotateFire = m_Player.FindAction("RotateFire", throwIfNotFound: true);
         m_Player_StopRotateFire = m_Player.FindAction("StopRotateFire", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
+        m_Player_Select = m_Player.FindAction("Select", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -470,6 +403,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RotateFire;
     private readonly InputAction m_Player_StopRotateFire;
     private readonly InputAction m_Player_Fire;
+    private readonly InputAction m_Player_Select;
     public struct PlayerActions
     {
         private @PlayerControl m_Wrapper;
@@ -478,6 +412,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         public InputAction @RotateFire => m_Wrapper.m_Player_RotateFire;
         public InputAction @StopRotateFire => m_Wrapper.m_Player_StopRotateFire;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
+        public InputAction @Select => m_Wrapper.m_Player_Select;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -499,6 +434,9 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 @Fire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
                 @Fire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire;
+                @Select.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
+                @Select.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
+                @Select.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelect;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -515,6 +453,9 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 @Fire.started += instance.OnFire;
                 @Fire.performed += instance.OnFire;
                 @Fire.canceled += instance.OnFire;
+                @Select.started += instance.OnSelect;
+                @Select.performed += instance.OnSelect;
+                @Select.canceled += instance.OnSelect;
             }
         }
     }
@@ -537,20 +478,12 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_GamepadSchemeIndex];
         }
     }
-    private int m_Keyboord2SchemeIndex = -1;
-    public InputControlScheme Keyboord2Scheme
-    {
-        get
-        {
-            if (m_Keyboord2SchemeIndex == -1) m_Keyboord2SchemeIndex = asset.FindControlSchemeIndex("Keyboord2");
-            return asset.controlSchemes[m_Keyboord2SchemeIndex];
-        }
-    }
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnRotateFire(InputAction.CallbackContext context);
         void OnStopRotateFire(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
     }
 }
