@@ -391,6 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 0
+  playerMesh: {fileID: 5248861950702721553}
   fireBallOrbitPlayer: {fileID: 5248861950512127108}
   playerBody: {fileID: 5248861950702721555}
   mouvementInput: {x: 0, y: 0}
@@ -487,6 +488,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7a3cc5a0-2f33-48ea-a73f-19c6db209331
     m_ActionName: Player/Fire[/Keyboard/semicolon]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 82fa28c4-23c2-4e91-9b8a-edba43cdbc32
+    m_ActionName: Player/Select[/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

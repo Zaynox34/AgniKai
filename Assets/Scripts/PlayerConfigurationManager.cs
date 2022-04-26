@@ -28,7 +28,11 @@ public class PlayerConfigurationManager : MonoBehaviour
             playerConfigs = new List<PlayerConfiguration>();
         }
     }
-
+    public List<PlayerConfiguration> GetPlayerConfigs()
+    {
+        Debug.Log(playerConfigs.Count);
+        return playerConfigs;
+    }
     public void SetPlayerColor(int index,Material color)
     {
         Debug.Log(playerConfigs.Count);

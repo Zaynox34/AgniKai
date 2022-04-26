@@ -428,6 +428,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerConfigurationManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5054078688522791041, guid: 2feec2b936a56c84fb10372df606c526, type: 3}
+      propertyPath: m_AllowJoining
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054078688522791041, guid: 2feec2b936a56c84fb10372df606c526, type: 3}
+      propertyPath: m_MaxPlayerCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5054078688522791047, guid: 2feec2b936a56c84fb10372df606c526, type: 3}
       propertyPath: m_RootOrder
       value: 3

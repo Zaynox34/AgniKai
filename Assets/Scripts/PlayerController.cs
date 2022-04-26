@@ -6,6 +6,11 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public float playerSpeed;
+    private PlayerConfiguration playerConfig;
+    [SerializeField] private MeshRenderer playerMesh;
+
+    private PlayerControl controls;
+
     [SerializeField] private GameObject fireBallOrbitPlayer;
     [SerializeField] private GameObject playerBody;
     [SerializeField] private Vector2 mouvementInput = Vector2.zero;
@@ -15,6 +20,28 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float power;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        controls = new PlayerControl();
+    }
+
+    public void InitialzePlayer(PlayerConfiguration pc)
+    {
+        playerConfig= pc;
+        playerMesh.material = pc.PlayerMaterial;
+        Debug.Log(playerConfig.Input.currentControlScheme);
+        playerConfig.Input.onActionTriggered += Input_onActionTriggered;
+
+    }
+
+    private void Input_onActionTriggered(InputAction.CallbackContext obj)
+    {
+        if(obj.action.name==controls.Player.Move.name)
+        {
+            OnMove(obj);
+        }
+    }
+
     void Start()
     {      
         playerSpeed = 10f;
