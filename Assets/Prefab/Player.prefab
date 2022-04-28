@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: 2521253547918036705}
   - component: {fileID: 4612311440270457856}
   - component: {fileID: 1633229815780499439}
-  - component: {fileID: 8050514511190194112}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -172,19 +171,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8050514511190194112
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2661787333900419659}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5248861950512127108
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabFireBall: {fileID: 8827309911571924323, guid: 77186b1a923caad47a67cbf3f2d96124, type: 3}
+  playerBody: {fileID: 5248861950702721555}
   prefabTargetBall: {fileID: 6041566781528845722, guid: 0f110ccd87d87b141975846ed382b3ec, type: 3}
   prefabOriginBall: {fileID: 7738184706785574380, guid: 49f43285113e09a4790d10ba91cef5ff, type: 3}
   fireBallGroup: {fileID: 299367425385938813}
@@ -259,9 +246,10 @@ GameObject:
   - component: {fileID: 5248861950702721552}
   - component: {fileID: 5248861950702721553}
   - component: {fileID: 5248861950702721554}
+  - component: {fileID: 7459728822141226801}
   m_Layer: 0
   m_Name: PlayerBody
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -344,6 +332,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7459728822141226801
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5248861950702721555}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5248861950875449411
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +361,7 @@ GameObject:
   - component: {fileID: 5248861950875449408}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

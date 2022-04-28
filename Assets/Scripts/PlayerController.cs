@@ -25,9 +25,17 @@ public class PlayerController : MonoBehaviour
         controls = new PlayerControl();
     }
 
-    public void InitialzePlayer(PlayerConfiguration pc)
+    public void InitialzePlayer(PlayerConfiguration pc,int idPlayer)
     {
-        playerConfig= pc;
+        if(idPlayer==0)
+        {
+            playerBody.layer = 6;
+        }
+        if (idPlayer == 1)
+        {
+            playerBody.layer = 7;
+        }
+        playerConfig = pc;
         playerMesh.material = pc.PlayerMaterial;
         Debug.Log(playerConfig.Input.currentControlScheme);
         playerConfig.Input.onActionTriggered += Input_onActionTriggered;

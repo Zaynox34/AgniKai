@@ -5,12 +5,13 @@ using UnityEngine;
 public class FireballOrbitPlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject prefabFireBall;
+    [SerializeField] private GameObject playerBody;
     [SerializeField] private GameObject prefabTargetBall;
     [SerializeField] private GameObject prefabOriginBall;
     [SerializeField] private GameObject fireBallGroup;
     [SerializeField] private GameObject targetBallGroup;
     [SerializeField] private GameObject originBallGroup;
-    [SerializeField] private int nbFireball;
+    public int nbFireball;
     [SerializeField] private float sizeOrbit;
     [SerializeField] private float speedOrbit;
     [SerializeField] private float spawnRythm;
@@ -56,6 +57,8 @@ public class FireballOrbitPlayerController : MonoBehaviour
         {
             MeroriseOriginBall();
             GameObject fireBall = Instantiate(prefabFireBall);
+            fireBall.layer = playerBody.layer;
+            fireBall.GetComponent<MeshRenderer>().material = playerBody.GetComponent<MeshRenderer>().material;
             fireBall.transform.parent = fireBallGroup.transform;
             fireBall.transform.position = fireBallGroup.transform.position;
 
@@ -69,6 +72,7 @@ public class FireballOrbitPlayerController : MonoBehaviour
 
             fireBall.GetComponent<FireBallManager>().originLerp = originBall;
             fireBall.GetComponent<FireBallManager>().targetLerp = targetBall;
+            fireBall.GetComponent<FireBallManager>().fireballOrbitPlayerController = this.gameObject;
 
             nbFireball++;
             ArangeBall();
@@ -85,7 +89,7 @@ public class FireballOrbitPlayerController : MonoBehaviour
             {
                 targetBallGroup.transform.GetChild(i).position = transform.position + sizeOrbit * new Vector3(Mathf.Cos(360 / nbFireball * i*Mathf.Deg2Rad),0, Mathf.Sin(360 / nbFireball * i * Mathf.Deg2Rad));
                 targetBallGroup.transform.GetChild(i).position += new Vector3(0, 1, 0);
-                
+                //fireBallGroup.transform.GetChild(i).GetComponent<FireBallManager>().childId = i;
                 fireBallGroup.transform.GetChild(i).GetComponent<FireBallManager>().canLerp = true;
             }
         }
@@ -118,7 +122,7 @@ public class FireballOrbitPlayerController : MonoBehaviour
             Destroy(fireBallGroup.transform.GetChild(nbFireball - 1).GetComponent<FireBallManager>().targetLerp);
             if(realSpeed==0)
             {
-                fireBallGroup.transform.GetChild(nbFireball - 1).GetComponent<FireBallManager>().velocity = directionFire*20;
+                fireBallGroup.transform.GetChild(nbFireball - 1).GetComponent<FireBallManager>().velocity = directionFire*2;
             }
             else
             {
@@ -135,5 +139,9 @@ public class FireballOrbitPlayerController : MonoBehaviour
     {
         speedOrbit = 0;
     }
-
+    public void DeleteBall()
+    {
+        nbFireball--;
+        ArangeBall();
+    }
 }
