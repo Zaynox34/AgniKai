@@ -36,7 +36,20 @@ public class PlayerController : MonoBehaviour
 
     private void Input_onActionTriggered(InputAction.CallbackContext obj)
     {
-        if(obj.action.name==controls.Player.Move.name)
+        
+        if (obj.action.name==controls.Player.Move.name)
+        {
+            OnMove(obj);
+        }
+        if (obj.action.name == controls.Player.RotateFire.name)
+        {
+            OnRotateFire(obj);
+        }
+        if (obj.action.name == controls.Player.Fire.name)
+        {
+            Onfire(obj);
+        }
+        if (obj.action.name == controls.Player.Move.name)
         {
             OnMove(obj);
         }
