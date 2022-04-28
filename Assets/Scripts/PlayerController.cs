@@ -49,9 +49,9 @@ public class PlayerController : MonoBehaviour
         {
             Onfire(obj);
         }
-        if (obj.action.name == controls.Player.Move.name)
+        if (obj.action.name == controls.Player.StopRotateFire.name)
         {
-            OnMove(obj);
+            OnStopedRotation(obj);
         }
     }
 

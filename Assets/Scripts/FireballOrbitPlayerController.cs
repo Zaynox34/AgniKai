@@ -107,7 +107,7 @@ public class FireballOrbitPlayerController : MonoBehaviour
             speedOrbit += ax;
         }
         realSpeed = Mathf.Abs(speedOrbit * Mathf.Deg2Rad * sizeOrbit);
-        transform.parent.GetComponent<PlayerController>().playerSpeed=(maxSpeed-realSpeed)/5+8;
+        transform.parent.GetComponent<PlayerController>().playerSpeed=(maxSpeed-realSpeed)/3+8;
 
     }
     public void Feuer()
